@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="${addStudent} ? 'Create student' : 'Edit student'"/>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1 th:text="${addStudent} ? 'Create student' : 'Edit student'"/>
+
+<a th:href="@{/students}">Back to Students List</a>
+<br/>
+<br/>
+
+<form
+        th:action="@{/students/delete}"
+        th:object="${student}" method="POST">
+
+    <table border="0">
+        <tr th:if="${student.id}">
+            <td>Id</td>
+            <td>:</td>
+            <td th:utext="${student.id}">...</td>
+        </tr>
+        <tr>
+            <td>First name</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{firstName}"/></td>
+        </tr>
+        <tr>
+            <td>Last name</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{lastName}"/></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{email}"/></td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{department}"/></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{year}"/></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{address}" size="50"/></td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td>:</td>
+            <td><input type="text" th:field="*{postalCode}"/></td>
+        </tr>
+    </table>
+
+    <input type="submit" th:value="${deleteStudent} ? 'Create' : 'Update'"/>
+</form>
+
+<br/>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error"/>
+</body>
+</html>

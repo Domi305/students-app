@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Students List</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+</head>
+<body>
+<h1>Students List</h1>
+<div>
+    <nobr>
+        <a th:href="@{/students/add}">Add Student</a> |
+        <a th:href="@{/}">Back to Index</a> |
+        <a th:href="@{/}">Student details</a>
+    </nobr>
+</div>
+<br/>
+<br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Year</th>
+            <th>Address</th>
+            <th>Postal Code</th>
+            <!--<th>Edit</th>
+            <th>Delete</th>-->
+        </tr>
+        <tr th:each="student : ${students}">
+           <!-- <td th:utext="${student.id}">...</td>-->
+                        <td>
+                            <a th:href="@{/students/{studentId}(studentId=${student.id})}" th:utext="${student.id}">...</a>
+                        </td>
+            <td th:utext="${student.firstName}">...</td>
+            <td th:utext="${student.lastName}">...</td>
+                      <!--  <td>
+                            <a th:href="@{/students/{studentId}(studentId=${student.id})}" th:utext="${student.lastName}">...</a>
+                        </td>-->
+            <td th:utext="${student.email}">...</td>
+            <td th:utext="${student.department}">...</td>
+            <td th:utext="${student.year}">...</td>
+            <td th:utext="${student.address}">...</td>
+            <td th:utext="${student.postalCode}">...</td>
+            <td>
+                <a th:href="@{/students/edit/{studentId}(studentId=${student.id})}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{/students/delete/{studentId}(studentId=${student.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</div>
+<br/>
+<br/>
+</body>
+</html>

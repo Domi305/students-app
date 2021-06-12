@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Student details</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+
+<body>
+
+<h1>Student Details</h1>
+<a th:href="@{/students}">Back to Students List</a>
+<br/>
+<br/>
+
+<div th:if="${student}">
+    <table border="0">
+        <tr>
+            <td>ID</td>
+            <td>:</td>
+            <td th:utext="${student.id}">...</td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td>:</td>
+            <td th:utext="${student.firstName}">...</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>:</td>
+            <td th:utext="${student.lastName}">...</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td th:utext="${student.email}">...</td>
+        </tr>
+        <tr>
+            <td>Department</td>
+            <td>:</td>
+            <td th:utext="${student.department}">...</td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td>:</td>
+            <td th:utext="${student.year}">...</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td th:utext="${student.address}">...</td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td>:</td>
+            <td th:utext="${student.postalCode}">...</td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <!--        <div th:if="not ${allowDelete}">-->
+    <!--            <a th:href="@{/contacts/{contactId}/edit(contactId=${contact.id})}">Edit</a> |-->
+    <!--            <a th:href="@{/contacts/{contactId}/delete(contactId=${contact.id})}">Delete</a>-->
+    <!--        </div>-->
+    <!--        <form th:if="${allowDelete}" th:action="@{/contacts/{contactId}/delete(contactId=${contact.id})}" method="POST">-->
+    <!--            Delete this contact? <input type="submit" th:value="Yes" />-->
+    <!--        </form>-->
+</div>
+
+<div th:if="${errorMessage}" th:utext="${errorMessage}" class="error" />
+</body>
+</html>
